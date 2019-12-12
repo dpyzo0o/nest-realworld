@@ -42,6 +42,10 @@ export class ConfigService {
     return this.envConfig.DB_PASSWORD;
   }
 
+  get jwtSecret(): string {
+    return this.envConfig.JWT_SECRET;
+  }
+
   private validateInput(envConfig: EnvConfig): EnvConfig {
     const envVarsSchema: Joi.ObjectSchema = Joi.object({
       NODE_ENV: Joi.string()
@@ -53,6 +57,7 @@ export class ConfigService {
       DB_USER: Joi.string().required(),
       DB_PASSWORD: Joi.string().required(),
       DB_PORT: Joi.number().default(3306),
+      JWT_SECRET: Joi.string().required(),
     });
 
     const { error, value: validatedEnvConfig } = envVarsSchema.validate(
