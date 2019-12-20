@@ -4,6 +4,6 @@ import { TagService } from './tag.service';
 
 @Module({
   controllers: [TagController],
-  providers: [TagService]
+  providers: [TagService],
 })
 export class TagModule {}

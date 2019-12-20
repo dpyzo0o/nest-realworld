@@ -60,9 +60,7 @@ export class ConfigService {
       JWT_SECRET: Joi.string().required(),
     });
 
-    const { error, value: validatedEnvConfig } = envVarsSchema.validate(
-      envConfig,
-    );
+    const { error, value: validatedEnvConfig } = envVarsSchema.validate(envConfig);
 
     if (error) {
       throw new Error(`Config validation error: ${error.message}`);
